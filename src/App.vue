@@ -1,20 +1,22 @@
 <template>
   <div id="app">
     <div class="sidebar-wrapper">
-      <Notebar />
+      <notebar />
     </div>
     <div class="content-wrapper">
-      <router-view />
+      <note-full />
     </div>
   </div>
 </template>
 
 <script>
-import Notebar from "./components/Notebar";
+import Notebar from "@/components/Notebar";
+import NoteFull from "@/components/Note/NoteFull";
 
 export default {
   components: {
-    Notebar
+    Notebar,
+    NoteFull
   }
 };
 </script>
@@ -29,10 +31,10 @@ export default {
 
 .sidebar-wrapper {
   float: left;
-  width: 260px;
+  width: 280px;
 }
 
 .content-wrapper {
-  margin-left: 260px;
+  margin-left: 280px;
 }
 </style>

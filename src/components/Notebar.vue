@@ -1,6 +1,6 @@
 <template>
   <div id="notebar" class="bg-gray-200 h-screen overflow-y-scroll">
-    <div class="grid grid-cols-4 p-2">
+    <div class="grid grid-cols-4 p-2 sticky top-0 bg-gray-200">
       <div class="col-span-1 text-left align-middle">...</div>
       <div class="col-span-2 text-center align-middle text-xl">Notes</div>
       <div class="col-span-1 text-right">
@@ -47,7 +47,6 @@ export default {
       });
     },
     clickNote(index) {
-      console.log("help?");
       const clickedNote = this.getNotes[index];
       this.$store.commit("selectNote", clickedNote.id);
     }
