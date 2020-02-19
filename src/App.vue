@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="sidebar-wrapper">
+      <Notebar />
     </div>
-    <router-view />
+    <div class="content-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
+
+<script>
+import Notebar from "./components/Notebar";
+
+export default {
+  components: {
+    Notebar
+  }
+};
+</script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.sidebar-wrapper {
+  float: left;
+  width: 260px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.content-wrapper {
+  margin-left: 260px;
 }
 </style>
