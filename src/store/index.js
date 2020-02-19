@@ -9,21 +9,32 @@ export default new Vuex.Store({
     allNotes: [{ id: 1, title: "Creating a Markdown Editor", body: "Now this may seem like a daunting task, given the scope of the project and some people's inexperience with similar things, it can be easy to get disheartened by your own lack knowledge, for example when you look up the answer online only to find the only other person to ever have asked get called dumb by other programmers.", created_at: "2020-02-10" }]
   },
   mutations: {
-    createNewNote(state, note) {
-      // Add new note to from of array.
+    /**
+     * Adds new note to beginning of note array.
+     * @param {selectedNote, allNotes} state the current Vuex state storage.
+     * @param {id, title, body, created_at} note the new note to be inserted.
+     */
+    addNote(state, note) {
+      // Unshift appends to front of array.
       state.allNotes.unshift(note);
     },
-    selectNote(state, noteID) {
-      const note = state.allNotes.reduce((final_note, curr_note) => {
-        if (curr_note.id === noteID) return curr_note;
-        return final_note;
-      }, { id: -1 });
-      if (note.id !== -1) state.selectedNote = note;
+    /**
+     * Sets specified note to be the currently active one.
+     * @param {selectedNote, allNotes} state the current Vuex state storage.
+     * @param {id, title, body, created_at} note the new note to select.
+     */
+    selectNote(state, note) {
+      // No need for {...note} as we want the 2 objects to be identical (even by reference).
+      state.selectedNote = note;
     }
   },
   getters: {
+    /**
+     *  Gets the next non-used ID from current notes.
+     * @param {selectedNote, allNotes} state the current Vuex state storage.
+     */
     getNewNoteId(state) {
-      // Get maximum current ID, and add 1 to generate new maximum ID.
+      // Add 1 to current highest ID to get unique ID.
       return 1 + state.allNotes.reduce((maxID, currentNote) => {
         if (maxID < currentNote.id) {
           maxID = currentNote.id;
