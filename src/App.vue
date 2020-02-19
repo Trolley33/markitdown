@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Notebar from "@/components/Notebar";
-import NoteFull from "@/components/Note/NoteFull";
+import Notebar from "@/components/Notebar/Notebar";
+import NoteFull from "@/components/Note/Note";
 
 export default {
   components: {

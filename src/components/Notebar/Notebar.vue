@@ -1,27 +1,36 @@
 <template>
   <div id="notebar" class="bg-gray-200 h-screen overflow-y-scroll">
     <div class="grid grid-cols-4 p-2 sticky top-0 bg-gray-200">
-      <div class="col-span-1 text-left align-middle">...</div>
-      <div class="col-span-2 text-center align-middle text-xl">Notes</div>
-      <div class="col-span-1 text-right">
-        <div class="text-gray-800 hover:text-blue-600 cursor-pointer" @click="createNewNote">
-          <font-awesome-icon class="align-middle" icon="plus" />
-        </div>
+      <div class="col-span-1 text-left pl-1">
+        <font-awesome-icon
+          @click="createNewNote"
+          class="align-bottom text-gray-700 hover:text-blue-600 cursor-pointer"
+          icon="plus"
+        />
+      </div>
+      <div class="col-span-2 text-center align-middle text-2xl">Notes</div>
+      <div class="col-span-1 text-right pr-1">
+        <font-awesome-icon
+          @click="createNewNote"
+          class="align-bottom text-gray-700 hover:text-blue-600 cursor-pointer"
+          icon="plus"
+        />
       </div>
     </div>
 
     <note-preview
-      v-for="(note, index) in getNotes"
+      v-for="(note) in getNotes"
       :key="note.id"
       :selected="selectedNoteId === note.id"
       :note="note"
-      @click="clickNote(index)"
     ></note-preview>
   </div>
 </template>
 
 <script>
-import NotePreview from "@/components/Note/NotePreview";
+import moment from "moment";
+
+import NotePreview from "@/components/Notebar/NotebarPreview";
 
 export default {
   name: "notebar",
@@ -39,16 +48,13 @@ export default {
   },
   methods: {
     createNewNote() {
-      this.$store.commit("createNewNote", {
+      // Generate new default note, with unique ID.
+      this.$store.commit("addNote", {
         id: this.$store.getters.getNewNoteId,
-        title: "Default Title",
-        body: "Default body",
-        created_at: "2020-02-19"
+        title: "New Note",
+        body: "Lets get writing!",
+        created_at: moment().format("YYYY-MM-DD")
       });
-    },
-    clickNote(index) {
-      const clickedNote = this.getNotes[index];
-      this.$store.commit("selectNote", clickedNote.id);
     }
   }
 };
