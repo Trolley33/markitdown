@@ -3,13 +3,14 @@
     <div class="px-3 py-2">
       <div class="text-lg">{{note.title}}</div>
       <div class="text-sm text-blue-500" :class="getResponsiveClasses">{{ time }}</div>
-      <div class="oneline">{{note.body}}</div>
+      <div class="oneline">{{ plainBody }}</div>
     </div>
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import marked from "marked";
 
 export default {
   name: "note-preview",
@@ -32,6 +33,17 @@ export default {
      */
     time() {
       return moment(this.note.created_at).fromNow();
+    },
+    /**
+     * Removes markdown from body to show in preview text.
+     */
+    plainBody() {
+      const html = marked(this.note.body);
+      const div = document.createElement("div");
+      div.innerHTML = html;
+      const text = div.innerText;
+      div.remove();
+      return text;
     }
   },
   methods: {

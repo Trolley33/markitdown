@@ -43,7 +43,7 @@ export default {
       return this.$store.state.allNotes;
     },
     selectedNoteId() {
-      return this.$store.state.selectedNote.id;
+      return this.$store.state.selectedNoteId;
     }
   },
   methods: {

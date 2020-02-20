@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
-    <div class="sidebar-wrapper">
+  <div id="app" tabindex="0" @keydown.esc="escapePressed" class="flex" style="max-width:100vw;">
+    <div class="sidebar-wrapper flex-none">
       <notebar />
     </div>
-    <div class="content-wrapper">
+    <div class="content-wrapper flex-auto">
       <note-full />
     </div>
   </div>
@@ -17,6 +17,17 @@ export default {
   components: {
     Notebar,
     NoteFull
+  },
+  methods: {
+    escapePressed() {
+      console.log("Escape pressed");
+      this.$store.commit("selectNote", {
+        id: 0,
+        title: "",
+        body: "",
+        created_at: ""
+      });
+    }
   }
 };
 </script>
@@ -27,14 +38,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  outline: none;
 }
 
 .sidebar-wrapper {
-  float: left;
-  width: 280px;
+  /* float: left; */
+  width: 275px;
 }
 
 .content-wrapper {
-  margin-left: 280px;
+  /* margin-left: 280px; */
 }
 </style>
