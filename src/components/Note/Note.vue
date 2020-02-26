@@ -1,13 +1,18 @@
 <template>
   <div>
-    <div v-if="note && (note.id !== 0)" class="pt-4 px-4" ref="container">
+    <div v-if="note && note.id !== 0" class="pt-4 px-4" ref="container">
       <div ref="note_header" class="mb-2">
-        <h1>{{note.title}}</h1>
+        <editable-h1 @update="updateTitle">{{ note.title }}</editable-h1>
         <note-toolbar :preview="preview" @toggle-preview="togglePreview" />
         <hr />
       </div>
       <div>
-        <div ref="preview_box" class="overflow-y-auto" v-show="preview" v-html="renderedBody"></div>
+        <div
+          ref="preview_box"
+          class="overflow-y-auto"
+          v-show="preview"
+          v-html="renderedBody"
+        ></div>
         <textarea
           ref="editor"
           v-show="!preview"
@@ -33,12 +38,14 @@ import hljs from "highlight.js";
 
 import NoNote from "@/components/Note/NoNote";
 import NoteToolbar from "@/components/Note/NoteToolbar";
+import EditableH1 from "@/components/Utilities/EditableH1";
 
 export default {
   name: "note-full",
   components: {
     NoNote,
-    NoteToolbar
+    NoteToolbar,
+    EditableH1
   },
   data: () => ({
     preview: true,
@@ -91,6 +98,12 @@ export default {
     },
     openExternalUrl(url) {
       shell.openExternal(url);
+    },
+    updateTitle(newTitle) {
+      this.$store.commit("updateNote", {
+        id: this.note.id,
+        title: newTitle
+      });
     },
     togglePreview() {
       if (this.preview === true) {

@@ -1,9 +1,15 @@
 <template>
-  <div id="app" tabindex="0" @keydown.esc="escapePressed" class="flex" style="max-width:100vw;">
+  <div
+    id="app"
+    tabindex="0"
+    @keydown.esc="escapePressed"
+    class="flex"
+    style="max-width:100vw;"
+  >
     <div class="sidebar-wrapper flex-none">
       <notebar />
     </div>
-    <div class="content-wrapper flex-auto">
+    <div class="flex-auto">
       <note-full />
     </div>
   </div>
@@ -17,6 +23,18 @@ export default {
   components: {
     Notebar,
     NoteFull
+  },
+  created() {
+    this.$client.connect(err => {
+      if (err) throw err;
+      this.$client
+        .db("notes")
+        .collection("notes")
+        .find()
+        .toArray((err, items) => {
+          this.$store.commit("setAllNotes", items);
+        });
+    });
   },
   methods: {
     escapePressed() {
@@ -44,9 +62,5 @@ export default {
 .sidebar-wrapper {
   /* float: left; */
   width: 275px;
-}
-
-.content-wrapper {
-  /* margin-left: 280px; */
 }
 </style>

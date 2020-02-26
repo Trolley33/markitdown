@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-    <div>
+  <div class="flex my-1">
+    <div class="text-lg">
       <font-awesome-icon
         class="cursor-pointer"
         :icon="preview ? 'eye' : 'eye-slash'"
@@ -8,8 +8,6 @@
         @click="togglePreview"
       />
     </div>
-    <div>B</div>
-    <div>I</div>
   </div>
 </template>
 
