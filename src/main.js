@@ -7,7 +7,8 @@ import "@/plugins/fontawesome.js";
 
 import "@/assets/styles/index.css";
 import "highlight.js/styles/tomorrow.css";
-
+const storage = require("electron-json-storage");
+Vue.prototype.$storage = storage;
 Vue.config.productionTip = false;
 
 new Vue({

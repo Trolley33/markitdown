@@ -1,20 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import storage from "electron-json-storage";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     selectedNoteId: 0,
-    allNotes: [
-      {
-        id: 1,
-        title: "Creating a Markdown Editor",
-        body:
-          "## Code highlighting:\n```javascript\nshiftTabPressed(e) {\n\tconsole.log(e);\n}\n```\nNow this may seem like a daunting task, given the scope of the project and some people's inexperience with similar things, it can be easy to get disheartened by your own lack knowledge, for example when you look up the answer online only to find the only other person to ever have asked get called dumb by other programmers.",
-        created_at: "2020-02-10"
-      }
-    ]
+    allNotes: []
   },
   mutations: {
     setAllNotes(state, newNotes) {
@@ -28,6 +21,7 @@ export default new Vuex.Store({
     addNote(state, note) {
       // Unshift appends to front of array.
       state.allNotes.unshift(note);
+      storage.set("data", { notes: state.allNotes });
     },
     /**
      * Sets specified note to be the currently active one.
@@ -53,6 +47,7 @@ export default new Vuex.Store({
       const newNote = { ...currentNote, ...changes };
       // Update global notes array.
       state.allNotes.splice(index, 1, newNote);
+      storage.set("data", { notes: state.allNotes });
     }
   },
   getters: {

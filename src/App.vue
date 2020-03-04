@@ -24,7 +24,19 @@ export default {
     Notebar,
     NoteFull
   },
-  created() {},
+  created() {
+    this.$storage.get("data", (error, data) => {
+      if (error) throw error;
+      if (data["notes"]) {
+        this.$store.commit("setAllNotes", data["notes"]);
+      } else {
+        this.$storage.set("data", {
+          notes: []
+        });
+        this.$store.commit("setAllNotes", data["notes"]);
+      }
+    });
+  },
   methods: {
     escapePressed() {
       this.$store.commit("selectNote", {

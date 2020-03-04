@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { shell } from "electron";
 import marked from "marked";
 import dompurify from "dompurify";
 import _ from "lodash";
@@ -95,9 +94,6 @@ export default {
         32;
       this.$refs.editor.style.height = `${remaining_h}px`;
       this.$refs.preview_box.style.height = `${remaining_h}px`;
-    },
-    openExternalUrl(url) {
-      shell.openExternal(url);
     },
     updateTitle(newTitle) {
       this.$store.commit("updateNote", {
