@@ -14,8 +14,7 @@ export default new Vuex.Store({
           "## Code highlighting:\n```javascript\nshiftTabPressed(e) {\n\tconsole.log(e);\n}\n```\nNow this may seem like a daunting task, given the scope of the project and some people's inexperience with similar things, it can be easy to get disheartened by your own lack knowledge, for example when you look up the answer online only to find the only other person to ever have asked get called dumb by other programmers.",
         created_at: "2020-02-10"
       }
-    ],
-    client: null
+    ]
   },
   mutations: {
     setAllNotes(state, newNotes) {

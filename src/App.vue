@@ -24,21 +24,9 @@ export default {
     Notebar,
     NoteFull
   },
-  created() {
-    this.$client.connect(err => {
-      if (err) throw err;
-      this.$client
-        .db("notes")
-        .collection("notes")
-        .find()
-        .toArray((err, items) => {
-          this.$store.commit("setAllNotes", items);
-        });
-    });
-  },
+  created() {},
   methods: {
     escapePressed() {
-      console.log("Escape pressed");
       this.$store.commit("selectNote", {
         id: 0,
         title: "",
