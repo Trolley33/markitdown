@@ -3,3 +3,36 @@
 @tailwind components;
 
 @tailwind utilities;
+
+h1 {
+  @apply text-4xl;    
+}
+h2 {
+  @apply text-2xl;
+}
+h3 {
+  @apply text-xl;
+}
+h4 {
+  @apply text-lg;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+li {
+  margin-left: 30px;
+}
+
+pre {
+  white-space: pre-wrap;
+  tab-size: 2;
+}
+code {
+  font-family: "Fira Code", monospace !important;
+}
