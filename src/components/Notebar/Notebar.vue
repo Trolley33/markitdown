@@ -19,7 +19,7 @@
     </div>
 
     <note-preview
-      v-for="(note) in getNotes"
+      v-for="note in getNotes"
       :key="note.id"
       :selected="selectedNoteId === note.id"
       :note="note"
@@ -53,24 +53,11 @@ export default {
         id: this.$store.getters.getNewNoteId,
         title: "New Note",
         body: "Lets get writing!",
-        created_at: moment().format("YYYY-MM-DD")
+        created_at: moment().format("YYYY-MM-DD hh:mm:ss")
       });
     }
   }
 };
 </script>
 
-<style scoped>
-#notebar::-webkit-scrollbar {
-  width: 7px;
-}
-#notebar::-webkit-scrollbar-track {
-  @apply bg-gray-300;
-}
-#notebar::-webkit-scrollbar-thumb {
-  @apply bg-gray-500;
-}
-#notebar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
-}
-</style>
+<style scoped></style>

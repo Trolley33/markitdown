@@ -16,7 +16,7 @@
         <textarea
           ref="editor"
           v-show="!preview"
-          class="w-full p-1 resize-none"
+          class="w-full p-0 resize-none"
           style="box-sizing: border-box;"
           v-model="tempBody"
           @keydown.tab.exact="tabPressed"

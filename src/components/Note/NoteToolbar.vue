@@ -1,6 +1,6 @@
 <template>
   <div class="flex my-1">
-    <div class="text-lg">
+    <div class="text-lg flex-initial">
       <font-awesome-icon
         class="cursor-pointer"
         :icon="preview ? 'eye' : 'eye-slash'"
