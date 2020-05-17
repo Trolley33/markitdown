@@ -1,8 +1,10 @@
 <template>
   <div class="note-preview" :class="getResponsiveClasses" @click="click">
     <div class="px-3 py-2">
-      <div class="text-lg">{{note.title}}</div>
-      <div class="text-sm text-blue-500" :class="getResponsiveClasses">{{ time }}</div>
+      <div class="text-lg">{{ note.title }}</div>
+      <div class="text-sm text-blue-500" :class="getResponsiveClasses">
+        {{ time }}
+      </div>
       <div class="oneline">{{ plainBody }}</div>
     </div>
   </div>

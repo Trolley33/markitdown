@@ -8,6 +8,14 @@
         @click="togglePreview"
       />
     </div>
+    <div class="flex-1"></div>
+    <div class="text-lg flex-initial">
+      <font-awesome-icon
+        class="text-red-600 cursor-pointer"
+        icon="trash"
+        @click="deleteNote"
+      />
+    </div>
   </div>
 </template>
 
@@ -17,11 +25,13 @@ export default {
   props: ["preview"],
   methods: {
     togglePreview() {
-      this.$emit("toggle-preview");
+      this.$emit("preview-pressed");
+    },
+    deleteNote() {
+      this.$emit("delete-pressed");
     }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
