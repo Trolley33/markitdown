@@ -3,11 +3,16 @@
     <div v-if="note && note.id !== 0" class="pt-4 px-4" ref="container">
       <div ref="note_header" class="mb-2">
         <editable-h1 @update="updateTitle">{{ note.title }}</editable-h1>
-        <note-toolbar :preview="preview" @toggle-preview="togglePreview" />
+        <note-toolbar
+          :preview="preview"
+          @preview-pressed="togglePreview"
+          @delete-pressed="deleteNote"
+        />
         <hr />
       </div>
       <div>
         <div
+          id="note-area"
           ref="preview_box"
           class="overflow-y-auto"
           v-show="preview"
@@ -61,10 +66,14 @@ export default {
   },
   watch: {
     note(to, from) {
+      if (from !== undefined && to !== undefined) {
+        if (to.id === from.id) return;
+      }
+
       if (this.preview === false) {
         this.$store.commit("updateNote", { id: from.id, body: this.tempBody });
+        this.preview = true;
       }
-      this.preview = true;
       const vm = this;
       this.$nextTick(() => {
         vm.windowResize();
@@ -136,6 +145,10 @@ export default {
         "\t" +
         field.value.substring(start, field.value.length);
       e.target.selectionStart = e.target.selectionEnd = start + 1;
+    },
+    deleteNote() {
+      this.$store.commit("deleteNote", { id: this.note.id });
+      this.$emit("note-deleted");
     },
     shiftTabPressed() {}
   }

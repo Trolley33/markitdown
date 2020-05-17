@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.center-verticle {
+.center-vertical {
   position: absolute;
   top: 50%;
   transform: translateY(-75%);
