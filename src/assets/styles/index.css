@@ -36,3 +36,16 @@ pre {
 code {
   font-family: "Fira Code", monospace !important;
 }
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  @apply bg-gray-300;
+}
+*::-webkit-scrollbar-thumb {
+  @apply bg-gray-500;
+}
+*::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}

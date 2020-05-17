@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center center-verticle">
+  <div class="text-center my-48">
     <img class="h-48 inline-block" src="@/assets/images/main_icon.png" />
     <h1>Markbook</h1>
     <div class="text-lg">

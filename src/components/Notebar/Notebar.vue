@@ -60,17 +60,4 @@ export default {
 };
 </script>
 
-<style scoped>
-#notebar::-webkit-scrollbar {
-  width: 7px;
-}
-#notebar::-webkit-scrollbar-track {
-  @apply bg-gray-300;
-}
-#notebar::-webkit-scrollbar-thumb {
-  @apply bg-gray-500;
-}
-#notebar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
-}
-</style>
+<style scoped></style>
