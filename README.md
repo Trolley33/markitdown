@@ -1,24 +1,15 @@
-# downmark
+## MarkItDown
+Markdown based note taking app powered by Electron and Vue.js.
 
-## Project setup
-```
-npm install
-```
+#### Features
+- Local persistent storage.
+- Full markdown rendering support.
+- Clean minimal design.
+- Code highlighting with `highlight.js`.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### Planned Features
+- Easier organisation system.
+    - Drag/drop re-arrangement.
+    - Sort/filter.
+    - Categories/tags.
+- Colour schemes/themes.
