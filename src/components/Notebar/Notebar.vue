@@ -19,7 +19,7 @@
     </div>
 
     <note-preview
-      v-for="(note) in getNotes"
+      v-for="note in getNotes"
       :key="note.id"
       :selected="selectedNoteId === note.id"
       :note="note"
@@ -53,7 +53,7 @@ export default {
         id: this.$store.getters.getNewNoteId,
         title: "New Note",
         body: "Lets get writing!",
-        created_at: moment().format("YYYY-MM-DD")
+        created_at: moment().format("YYYY-MM-DD HH:mm:ss")
       });
     }
   }

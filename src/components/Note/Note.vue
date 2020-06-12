@@ -12,6 +12,7 @@
           class="overflow-y-auto"
           v-show="preview"
           v-html="renderedBody"
+          @dblclick="togglePreview"
         ></div>
         <textarea
           ref="editor"
