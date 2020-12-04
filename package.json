@@ -20,7 +20,7 @@
     "dompurify": "^2.0.8",
     "electron-json-storage": "^4.1.8",
     "firacode": "^2.0.0",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "lodash": "^4.17.15",
     "marked": "^0.8.0",
     "moment": "^2.24.0",
